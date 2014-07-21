@@ -413,11 +413,21 @@ public class IntentUtils {
     /**
      * Pick image from gallery
      */
-    public static Intent pickImage() {
-        Intent intent = new Intent(Intent.ACTION_PICK);
+    public static Intent pickImage(Uri uri) {
+        Intent intent = new Intent(Intent.ACTION_PICK,uri);
         intent.setType("image/*");
         return intent;
     }
+
+	public static Intent pickImageFromExternal()
+	{
+		return pickImage(MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+	}
+
+	public static Intent pickImageFromInternal()
+	{
+		return pickImage(MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+	}
 
     /**
      * Dials (but does not actually initiate the call) the number given.

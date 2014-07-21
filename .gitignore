@@ -26,3 +26,16 @@ local.properties
 # Maven output
 target/
 */target
+library/build/generated/source/buildConfig/debug/com/dmitriy/tarasov/BuildConfig.java
+library/build/generated/source/buildConfig/release/com/dmitriy/tarasov/BuildConfig.java
+library/build/intermediates/bundles/debug/AndroidManifest.xml
+library/build/intermediates/bundles/release/AndroidManifest.xml
+library/build/intermediates/bundles/release/classes.jar
+library/build/intermediates/incremental/aidl/debug/dependency.store
+library/build/intermediates/incremental/aidl/release/dependency.store
+library/build/intermediates/incremental/mergeAssets/debug/merger.xml
+library/build/intermediates/incremental/mergeAssets/release/merger.xml
+library/build/intermediates/incremental/packageResources/debug/merger.xml
+library/build/intermediates/incremental/packageResources/release/merger.xml
+library/build/outputs/aar/library.aar
+library/build/tmp/packageReleaseJar/MANIFEST.MF
