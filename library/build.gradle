@@ -12,7 +12,7 @@ android {
         }
         defaultConfig {
             minSdkVersion 9
-            targetSdkVersion 20
+            targetSdkVersion rootProject.ext.compileSdkVersion
         }
 
     }
