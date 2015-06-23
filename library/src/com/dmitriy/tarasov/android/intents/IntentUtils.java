@@ -540,7 +540,7 @@ public class IntentUtils {
 	public static boolean isAppAvailable(Context context, String packageName) {
 		PackageManager packageManager = context.getPackageManager();
 		try {
-			packageManager.getPackageInfo(packageName, PackageManager.GET_ACTIVITIES);
+			packageManager.getPackageInfo(packageName, 0);
 			return true;
 		} catch (PackageManager.NameNotFoundException | RuntimeException e) {
 			return false;
