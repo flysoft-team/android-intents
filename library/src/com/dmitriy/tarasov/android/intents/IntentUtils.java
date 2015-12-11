@@ -19,6 +19,7 @@ package com.dmitriy.tarasov.android.intents;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
@@ -540,8 +541,8 @@ public class IntentUtils {
 	public static boolean isAppAvailable(Context context, String packageName) {
 		PackageManager packageManager = context.getPackageManager();
 		try {
-			packageManager.getPackageInfo(packageName, 0);
-			return true;
+			ApplicationInfo applicationInfo = packageManager.getApplicationInfo(packageName, 0);
+			return applicationInfo != null && applicationInfo.enabled;
 		} catch (PackageManager.NameNotFoundException | RuntimeException e) {
 			return false;
 		}
