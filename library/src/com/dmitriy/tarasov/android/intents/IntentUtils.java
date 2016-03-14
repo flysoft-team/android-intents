@@ -119,7 +119,7 @@ public class IntentUtils {
 	 * @param to      Receiver phone number
 	 * @param message Text to send
 	 */
-	public static Intent sendSms(Context context, String to, String message) {
+	public static Intent sendSms(Context context, String to, String message, Uri picture) {
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
 			String defaultSmsPackageName = Telephony.Sms.getDefaultSmsPackage(context);
 			Intent intent;
@@ -132,6 +132,9 @@ public class IntentUtils {
 			if (defaultSmsPackageName != null) {
 				intent.setPackage(defaultSmsPackageName);
 			}
+			if(picture != null){
+				intent.putExtra(Intent.EXTRA_STREAM, picture);
+			}
 			return intent;
 		} else {
 			Intent intent;
@@ -142,6 +145,10 @@ public class IntentUtils {
 				Uri smsUri = Uri.parse("tel:" + to);
 				intent = new Intent(Intent.ACTION_VIEW, smsUri);
 				intent.putExtra("address", to);
+			}
+
+			if(picture != null){
+				intent.putExtra(Intent.EXTRA_STREAM, picture);
 			}
 
 			intent.putExtra("sms_body", message);
