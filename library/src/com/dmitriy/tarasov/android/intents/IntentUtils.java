@@ -112,6 +112,22 @@ public class IntentUtils {
 		return intent;
 	}
 
+
+	public static Intent sendMms(Context context, String message, Uri picture){
+		Intent intent = new Intent(Intent.ACTION_SEND);
+
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+			String defaultSmsPackageName = Telephony.Sms.getDefaultSmsPackage(context);
+			if (defaultSmsPackageName != null) {
+				intent.setPackage(defaultSmsPackageName);
+			}
+		}
+		intent.putExtra(Intent.EXTRA_STREAM, picture);
+		intent.putExtra(Intent.EXTRA_TEXT, message);
+		intent.setType("image/*");
+		return intent;
+	}
+
 	/**
 	 * Send SMS message using built-in app
 	 *
@@ -119,7 +135,7 @@ public class IntentUtils {
 	 * @param to      Receiver phone number
 	 * @param message Text to send
 	 */
-	public static Intent sendSms(Context context, String to, String message, Uri picture) {
+	public static Intent sendSms(Context context, String to, String message) {
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
 			String defaultSmsPackageName = Telephony.Sms.getDefaultSmsPackage(context);
 			Intent intent;
@@ -128,13 +144,10 @@ public class IntentUtils {
 			} else {
 				intent = new Intent(Intent.ACTION_SENDTO, Uri.parse("smsto:" + to));
 			}
-			intent.putExtra("sms_body", message);
 			if (defaultSmsPackageName != null) {
 				intent.setPackage(defaultSmsPackageName);
 			}
-			if(picture != null){
-				intent.putExtra(Intent.EXTRA_STREAM, picture);
-			}
+			intent.putExtra("sms_body", message);
 			return intent;
 		} else {
 			Intent intent;
@@ -145,10 +158,6 @@ public class IntentUtils {
 				Uri smsUri = Uri.parse("tel:" + to);
 				intent = new Intent(Intent.ACTION_VIEW, smsUri);
 				intent.putExtra("address", to);
-			}
-
-			if(picture != null){
-				intent.putExtra(Intent.EXTRA_STREAM, picture);
 			}
 
 			intent.putExtra("sms_body", message);
