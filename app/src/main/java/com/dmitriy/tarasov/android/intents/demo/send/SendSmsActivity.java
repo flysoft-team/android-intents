@@ -43,7 +43,7 @@ public class SendSmsActivity extends BaseActivity {
     }
 
     public void sendSmsClick(View view) {
-        Intent intent = IntentUtils.sendSms(phone.getText().toString(), message.getText().toString());
+        Intent intent = IntentUtils.sendSms(this, phone.getText().toString(), message.getText().toString());
         startActivity(intent);
     }
 }

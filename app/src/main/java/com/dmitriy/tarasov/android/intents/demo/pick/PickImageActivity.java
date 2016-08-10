@@ -53,7 +53,7 @@ public class PickImageActivity extends BaseActivity {
     }
 
     public void pickImageClick(View view) {
-        Intent pickImage = IntentUtils.pickImage();
+        Intent pickImage = IntentUtils.pickImageFromExternal();
         startActivityForResult(pickImage, PICK_IMAGE_REQ);
     }
 }

@@ -19,7 +19,8 @@ At this moment collection includes this intents
 
 - **Share Text** - share text via thirdparty app like twitter, facebook, email, sms etc.
 - **Send SMS** - send SMS message using built-in app
-- **Send Email** - send email using appropriate app
+- **Send MMS** - send MMS message using built-in app
+- **Send Email** - send email using appropriate app with attaches
 - **Show Location** - opens the Maps application to the given coordinates
 - **Open Play Store** - opens app page at Google Play store
 - **Find Location** - opens the Maps application to the given query
@@ -38,20 +39,10 @@ At this moment collection includes this intents
 - **Pick Image** - pick image from gallery
 - **Capture Photo** - call standard camera app for taking a shot
 - **Crop Image** - call gallery app to crop your image
+- **Application availability** - check availability of the app by package name
+- **Share MIME** - share MIME object by URI
 
 ## Installation
-The library is available on maven central repository, just download jar and add it to your
-project classpath or add the following dependency
-
-**Maven**
-
-```xml
-<dependency>
-    <groupId>com.dmitriy-tarasov</groupId>
-    <artifactId>android-intents</artifactId>
-    <version>%latest_version%</version>
-</dependency>
-```
 
 **Gradle**
 
